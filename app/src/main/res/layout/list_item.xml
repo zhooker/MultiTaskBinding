@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.example.multitaskbinding.list.ImageInfo" />
+
+        <variable
+            name="presenter"
+            type="com.example.multitaskbinding.list.Presenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="2dp"
+        android:background="@android:color/holo_blue_bright"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/id_progress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text='@{info.progress+"%"}' />
+
+        <TextView
+            android:id="@+id/id_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@{info.name}" />
+
+        <Button
+            android:id="@+id/id_btn"
+            style="?android:attr/buttonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:onClick="@{(view)->presenter.startTask(info)}"
+            android:text="Change"
+            app:update="@{info.state}" />
+    </LinearLayout>
+</layout>
